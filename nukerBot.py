@@ -27,7 +27,7 @@ async def on_ready():
     print('Bot ID: {}'.format(bot.user.id))
 
 
-#opcion de eliminar canales por ceparado
+#opcion para eliminar canales por separado
 @bot.command()
 async def removechannel(ctx, channel: discord.TextChannel):
     await channel.delete()
@@ -75,8 +75,7 @@ async def nuke(ctx):
         print(Fore.GREEN + 'canal creado ' + Fore.RESET + 'nombre del canal: ' + Fore.YELLOW + f'{channel.name}')
 
 
-
-##########################obtener avatar de cualquier usuario del server##########################
+#obtener avatar de cualquier usuario del server
 @bot.command()
 async def avatar(ctx, *, avamember: discord.Member = None):
     userAvatarUrl = avamember.avatar_url
