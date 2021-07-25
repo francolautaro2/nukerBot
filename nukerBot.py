@@ -15,7 +15,7 @@ from discord import Intents
 
 os.system('cls')
 
-TOKEN = 'ODQzMzMxNzk2MjIwOTAzNDI0.YKCT8A.bMlJQgimtvEeRCB0nN5eheC1KIo'
+TOKEN = ''
 
 intents= Intents.default()
 intents.members = True
